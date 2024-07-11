@@ -11,7 +11,7 @@ while True:
     if opc==1:
         asignar()
     elif opc==2:
-        pass
+        clasify()
     elif opc==3:
         pass
     elif opc==4:
