@@ -8,7 +8,7 @@ trabajadores = [["Juan Pérez"],
                 ["Miguel Sánchez"],
                 ["Isabel Gómez"],
                 ["Francisco Díaz"],
-                ["Elena Fernández", "chucrut"]]
+                ["Elena Fernández"]]
 
 def verify_opc():
     try:
@@ -33,33 +33,83 @@ def asignar():
 
 def clasify():
     lessEightyHundred = []
-    lessEightyHundredC = 0
     eightyToTwoMil = []
-    eightyToTwoMilC= 0
     overTwoMil = []
-    overTwoMilC= 0
-    if len(trabajadores)<10:
-        for i in trabajadores:
-            for n in i:
-                if i[1]<8000000:
-                    lessEightyHundred.append(i)
-                    lessEightyHundredC + 1
-                elif i[1]>8000000 and n<20000000:
-                    eightyToTwoMil.append(i)
-                    eightyToTwoMilC + 1
-                else:
-                    overTwoMil.append(i)
-                    overTwoMilC + 1
-        print(f"Menos de 800 000: {lessEightyHundredC}")    
-        time.sleep(1)            
-        print(lessEightyHundredC)
+    lessEightyHundredC = 0
+    eightyToTwoMilC = 0
+    overTwoMilC = 0
+    if len(trabajadores[0])==2:
+        for i in trabajadores:  
+            if i[1] < 800000:
+                 lessEightyHundred.append(i)
+                 lessEightyHundredC = lessEightyHundredC + 1
+            elif i[1]>800000 and i[1]<2000000:
+                eightyToTwoMil.append(i)
+                eightyToTwoMilC = eightyToTwoMilC+1
+            else:
+                overTwoMil.append(i)
+                overTwoMilC = overTwoMilC+1
+
+        print(f"Menos de 800 000: {lessEightyHundredC}")              
+        for i in lessEightyHundred:
+            print(i)
+            time.sleep(1)
         time.sleep(1)
-        print(f"Entre 800 000 y 2 000 000: {eightyToTwoMil}")
+        print()
         time.sleep(1)
-        print(eightyToTwoMilC)
+        print(f"Entre 800 000 y 2 000 000: {eightyToTwoMilC}")
+        for i in eightyToTwoMil:
+            print(i)
+            time.sleep(1)
         time.sleep(1)
-        print(f"Más de 2 000 000: {overTwoMil}")    
+        print()
         time.sleep(1)
-        print(overTwoMilC)  
+        print(f"Más de 2 000 000: {overTwoMilC}")    
+        for i in overTwoMil:
+            print(i)
+            time.sleep(2)
     else:
         print("No existen sueldos para analizar")
+
+
+def stats():
+    money = []
+    number1 = 0
+    number2 = 1
+    if len(trabajadores[0])==2:
+        for i in trabajadores:
+                money.append(i[1])
+        money.sort()
+        for i in money:
+            number1 = number1 + i
+        promedio = number1/10
+        for i in money:
+            number2 * i 
+        mg = number2^0.1
+        print(f"El menor salario es: {money[0]}")
+        print(f"El mayor salario es: {money[9]}")
+        print(f"El promedio de salarios es: {promedio}")
+        print(f"La media geométrica de salarios es: {mg}")
+        time.sleep(1)
+    else:
+        print("No existen sueldos para analizar")
+    
+def report():
+    if len(trabajadores[0])==2:
+        with open("file.csv", "w") as File:
+            FileR = csv.writer(File)
+            title = ["Nombre empleado","Sueldo Base","Isapre/Fonasa","Sueldo liquido"]
+            FileR.writerow(title)
+            for i in trabajadores:
+                sueldo = i[1]
+                afp = sueldo * 0.12
+                salud = sueldo * 0.07
+                sueldoL = sueldo - (afp+salud)
+                i.append(salud)
+                i.append(afp)
+                i.append(sueldoL)
+                FileR.writerow(i)
+        print("(❁´◡`❁) Ha sido creado el reporte de sueldos")
+    else:
+        print("No existen sueldos, no se puede imprimir")
+    time.sleep(1)

@@ -13,11 +13,13 @@ while True:
     elif opc==2:
         clasify()
     elif opc==3:
-        pass
+        stats()
     elif opc==4:
-        pass
+        report()
     elif opc==5:
-        pass
+        print("Saliendo del programa...")
+        print("Alejandro Venegas - 22041459-0")
+        break    
     else:
         print("Debe ingresar una de nuestras opciones, intente de nuevo")
         time.sleep(1)
