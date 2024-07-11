@@ -51,6 +51,7 @@ def clasify():
                 overTwoMilC = overTwoMilC+1
 
         print(f"Menos de 800 000: {lessEightyHundredC}")              
+        print("Empleado | Salario")              
         for i in lessEightyHundred:
             print(i)
             time.sleep(1)
@@ -58,6 +59,7 @@ def clasify():
         print()
         time.sleep(1)
         print(f"Entre 800 000 y 2 000 000: {eightyToTwoMilC}")
+        print("Empleado | Salario")
         for i in eightyToTwoMil:
             print(i)
             time.sleep(1)
@@ -65,6 +67,7 @@ def clasify():
         print()
         time.sleep(1)
         print(f"Más de 2 000 000: {overTwoMilC}")    
+        print("Empleado | Salario")
         for i in overTwoMil:
             print(i)
             time.sleep(2)
@@ -82,10 +85,10 @@ def stats():
         money.sort()
         for i in money:
             number1 = number1 + i
+            number2 = number2 * i 
         promedio = number1/10
-        for i in money:
-            number2 * i 
-        mg = number2^0.1
+        mg = number2*(1/10)
+        #me acordaba de como poner potencias acá? no ❤ y ^ no era al parecer
         print(f"El menor salario es: {money[0]}")
         print(f"El mayor salario es: {money[9]}")
         print(f"El promedio de salarios es: {promedio}")
